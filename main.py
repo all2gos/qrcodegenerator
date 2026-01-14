@@ -49,7 +49,8 @@ if st.session_state.generate:
         img.save(buffer, format="PNG")
         
         buffer.seek(0) 
-        
+
+        st.image(img, caption="Generated QR Code")
         st.download_button(
             label="Download QR Code (.png)",
             data=buffer,
@@ -60,6 +61,7 @@ if st.session_state.generate:
 
 
         
+
 
 
 
