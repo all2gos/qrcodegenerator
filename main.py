@@ -1,6 +1,6 @@
 import streamlit as st
 import qrcode
-from PIL import Image
+from io import BytesIO
 
 st.set_page_config(page_title='QR Code Generator', page_icon=':link:')
 
@@ -41,17 +41,22 @@ if st.session_state.generate:
 
         qr.add_data(input_text)
         qr.make(fit=True)
-        img = qr.make_image(fill_color=QR_COLOR, back_color=BACKGROUND_COLOR).convert('RGB')
 
-        st.image(img, caption="Generated QR Code")
-        st.success("QR Code generated successfully!")
-        st.button("Download QR Code (.png format)", on_click=lambda: img.save("qrcode.png"))
+        buffer = BytesIO()
+        img.save(buffer, format="PNG")
+        buffer.seek(0) 
+        st.download_button(
+            label="Download QR Code (.png)",
+            data=buffer,
+            file_name="qrcode.png",
+            mime="image/png")
 
         if st.success:
             st.markdown("I hope everything worked out! I'm glad I could help. As I mentioned, the service is free—there are no hidden fees or watermarks. However, if you’d like, **you can buy me a coffee [here](https://buymeacoffee.com/all2).**")
 
 
         
+
 
 
 
