@@ -45,7 +45,7 @@ if st.session_state.generate:
 
         buffer = BytesIO()
         
-        img = qr.make_image(fill_color=QR_COLOR, back_color="BACKGROUND_COLOR").convert("RGB")
+        img = qr.make_image(fill_color=QR_COLOR, back_color=BACKGROUND_COLOR).convert("RGB")
         img.save(buffer, format="PNG")
         
         buffer.seek(0) 
@@ -60,6 +60,7 @@ if st.session_state.generate:
 
 
         
+
 
 
 
