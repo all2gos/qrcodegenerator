@@ -2,8 +2,9 @@ import streamlit as st
 import qrcode
 from PIL import Image
 
+st.set_page_config(page_title='QR Code Generator', page_icon=':link:')
 
-st.title("QR Code Generator")
+st.title("QR Code Generator by all2")
 st.write('Yes, it is possible to create a QR code generator which is free, easy to use, without any watermarks, exactly as you wish that this kind of tool should work.')
 
 st.header("Enter the text or URL to generate a QR code:")
@@ -44,12 +45,13 @@ if st.session_state.generate:
 
         st.image(img, caption="Generated QR Code")
         st.success("QR Code generated successfully!")
-        st.button("Download QR Code", on_click=lambda: img.save("qrcode.png"))
+        st.button("Download QR Code (.png format)", on_click=lambda: img.save("qrcode.png"))
 
         if st.success:
             st.markdown("I hope everything worked out! I'm glad I could help. As I mentioned, the service is free—there are no hidden fees or watermarks. However, if you’d like, **you can buy me a coffee [here](https://buymeacoffee.com/all2).**")
 
 
         
+
 
 
